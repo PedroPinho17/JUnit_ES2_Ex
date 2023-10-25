@@ -4,3 +4,42 @@
  * This is a general purpose Gradle build.
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.4/samples
  */
+plugins{
+    id 'java' //saber que estou a trabalhar em java
+
+ }
+
+
+ group 'JUnitProject'
+ version '1.0-SNAPSHOT'
+
+ sourceCompatibility = 1.8
+
+ repositories {
+    mavenCentral()// Sem isto não se vai conseguir usaar o JUnit
+ }
+
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+/*
+ * Nível de detalhe dos log gerados
+*/
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
+// é assim que está quando crio uma gradle application
+// tasks.named('test') {
+//     // Use JUnit Platform for unit tests.
+//     useJUnitPlatform()
+// }
+
+
